@@ -1,0 +1,59 @@
+{
+  "name": "alert",
+  "version": "1.0.0-beta.1",
+  "description": "Vue alert component",
+  "main": "index.js",
+  "scripts": {
+    "tailwindcss": " npx tailwindcss build tailwindcss/alert.css -o dist/Alert.css --config tailwindcss/tailwind.config.js",
+    "css": "node postcss",
+    "watch": "npm run serve",
+    "serve": "vue-cli-service build --target lib --name=Alert ./main.vue --watch",
+    "build": "vue-cli-service build --target lib --name=Alert ./main.vue",
+    "lint": "vue-cli-service lint",
+    "fix": "vue-cli-service lint --fix",
+    "pre-release": "npm run build; git add . -A; git commit -m 'pre-release commit'",
+    "release-prepatch": "npm run pre-release && npm version prepatch && npm run release;",
+    "release-patch": "npm run pre-release && npm version patch && npm run release;",
+    "release-preminor": "npm run pre-release && npm version preminor && npm run release;",
+    "release-minor": "npm run pre-release && npm version minor && npm run release;",
+    "release-premajor": "npm run pre-release && npm version premajor && npm run release;",
+    "release-major": "npm run pre-release && npm version major && npm run release;",
+    "release": "npm publish; git add . -A; git commit; git push --tags origin",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/alert.git"
+  },
+  "keywords": [
+    "Alert",
+    "Vue",
+    "Component",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/alert/issues"
+  },
+  "homepage": "https://github.com/vue-interface/alert#readme",
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "vue": "^2.6.11",
+    "vue-interface": "^0.4.58"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "^10.1.0",
+    "color": "^3.1.2",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.4.6",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
