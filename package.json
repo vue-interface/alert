@@ -1,6 +1,6 @@
 {
-  "name": "alert",
-  "version": "1.0.1-0",
+  "name": "@vue-interface/alert",
+  "version": "1.0.1",
   "description": "Vue alert component",
   "main": "index.js",
   "scripts": {
@@ -12,11 +12,8 @@
     "lint": "vue-cli-service lint",
     "fix": "vue-cli-service lint --fix",
     "pre-release": "npm run build; git add . -A; git commit -m 'pre-release commit'",
-    "release-prepatch": "npm run pre-release && npm version prepatch -m \"%s\" && npm run release;",
     "release-patch": "npm run pre-release && npm version patch -m \"%s\" && npm run release;",
-    "release-preminor": "npm run pre-release && npm version preminor -m \"%s\" && npm run release;",
     "release-minor": "npm run pre-release && npm version minor -m \"%s\" && npm run release;",
-    "release-premajor": "npm run pre-release && npm version premajor -m \"%s\" && npm run release;",
     "release-major": "npm run pre-release && npm version major -m \"%s\" && npm run release;",
     "release": "git add . -A; git commit; git push --tags origin; npm publish;",
     "test": "echo \"Error: no test specified\" && exit 1"
