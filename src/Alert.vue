@@ -16,7 +16,6 @@
 </template>
 
 <script>
-
 import AlertClose from './AlertClose';
 // import ProgressBar from 'vue-interface/src/Components/ProgressBar';
 import Variant from 'vue-interface/src/Mixins/Variant';
@@ -40,30 +39,16 @@ export default {
     props: {
 
         /**
-         * Is the alert dismissible
+         * Can the alert be dismissed.
          *
-         * @property Boolean
+         * @param {Boolean}
          */
         dismissible: Boolean,
 
         /**
-         * The alert's title/heading
+         * Should the alert fade when dismissed
          *
-         * @property Boolean
-         */
-        heading: String,
-
-        /**
-         * The alert's title/heading
-         *
-         * @property Boolean
-         */
-        title: String,
-
-        /**
-         * Should the alert fade when hidden
-         *
-         * @property Boolean
+         * @param {Boolean}
          */
         fade: {
             type: Boolean,
@@ -71,15 +56,30 @@ export default {
         },
 
         /**
+         * The alert heading.
+         *
+         * @param {String}
+         */
+        heading: String,
+
+        /**
          * Should the alert be visible by default. If passed a number, alert
          * will be shown for the number of seconds that are passed.
          *
-         * @property Boolean
+         * @param {Number|Boolean} [show=true]
          */
         show: {
             type: [Number, Boolean],
             default: true
-        }
+        },
+
+        /**
+         * The alert's title
+         *
+         * @param {String}
+         * @alias heading
+         */
+        title: String
 
     },
 

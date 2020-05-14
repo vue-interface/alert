@@ -8,12 +8,7 @@ module.exports = {
         },
         plugins:[
             new ManifestPlugin()
-        ],
-        externals: {
-            'axios': 'Axios',
-            'moment': 'moment',
-            'popper.js': 'Popper'
-        }
+        ]
     },
     pages: {
         index: {

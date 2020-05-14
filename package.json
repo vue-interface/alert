@@ -4,8 +4,6 @@
   "description": "Vue alert component",
   "main": "index.js",
   "scripts": {
-    "tailwindcss": " npx tailwindcss build tailwindcss/alert.css -o dist/Alert.css --config tailwindcss/tailwind.config.js",
-    "css": "node postcss",
     "watch": "npm run serve",
     "serve": "vue-cli-service build --target lib --name=Alert ./main.vue --watch",
     "build": "vue-cli-service build --target lib --name=Alert ./main.vue",
@@ -16,7 +14,9 @@
     "release-minor": "npm run pre-release && npm version minor -m \"%s\" && npm run release;",
     "release-major": "npm run pre-release && npm version major -m \"%s\" && npm run release;",
     "release": "git add . -A; git commit; git push --tags origin; npm publish;",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "./node_modules/.bin/vuepress dev docs",
+    "docs:build": "./node_modules/.bin/vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,9 @@
   "bugs": {
     "url": "https://github.com/vue-interface/alert/issues"
   },
-  "homepage": "https://github.com/vue-interface/alert#readme",
+  "homepage": "https://github.com/vue-interface/alert/docs#readme",
   "dependencies": {
+    "@vue-interface/variant": "^1.0.5",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
     "vue-interface": "^0.4.58"
@@ -44,13 +45,17 @@
     "@vue/cli-plugin-babel": "~4.3.0",
     "@vue/cli-plugin-eslint": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
+    "@vuepress/plugin-register-components": "^1.5.0",
     "babel-eslint": "^10.1.0",
     "color": "^3.1.2",
     "cssnano": "^4.1.10",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "markdown-it-meta": "0.0.1",
     "postcss-cli": "^7.1.1",
     "tailwindcss": "^1.4.6",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.0",
+    "vuepress-plugin-template-constants": "^0.2.1"
   }
 }
