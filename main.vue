@@ -1,4 +1,5 @@
 <script>
+import './src/css/alert.css';
 import Alert from './src/Alert';
 export default Alert;
 </script>

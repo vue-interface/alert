@@ -28,7 +28,7 @@ export default {
 
     components: {
         AlertClose,
-        // ProgressBar
+        ProgressBar
     },
 
     mixins: [
