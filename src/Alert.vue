@@ -17,10 +17,10 @@
 
 <script>
 import AlertClose from './AlertClose';
-// import ProgressBar from 'vue-interface/src/Components/ProgressBar';
-import Variant from 'vue-interface/src/Mixins/Variant';
-import transition from 'vue-interface/src/Helpers/Transition';
-import MergeClasses from 'vue-interface/src/Mixins/MergeClasses';
+import Variant from '@vue-interface/variant';
+import { transition } from '@vue-interface/utils';
+import ProgressBar from '@vue-interface/progress-bar';
+import MergeClasses from '@vue-interface/merge-classes';
 
 export default {
 

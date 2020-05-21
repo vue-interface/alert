@@ -9,6 +9,7 @@ module.exports = {
     },
     plugins: [
         require('@vue-interface/variant/tailwindcss'),
-        require('./tailwindcss')
+        require('./tailwindcss'),
+        require('autoprefixer')
     ]
 };
