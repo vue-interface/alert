@@ -16,7 +16,6 @@ module.exports = {
     plugins: [
         require('@vue-interface/variant/tailwindcss'),
         require('@vue-interface/progress-bar/tailwindcss'),
-        require('./tailwindcss'),
-        require('autoprefixer')
+        require('./tailwindcss')
     ]
 };

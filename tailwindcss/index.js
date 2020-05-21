@@ -1,18 +1,6 @@
 const Color = require('color');
 const plugin = require('tailwindcss/plugin');
-
-function variations(colors, prefix = null) {
-    return Object.entries(colors).reduce((carry, [key, value]) => {
-        if(typeof value === 'object') {
-            return Object.assign(carry, variations(value, key + '-'));
-        }
-        else {
-            return Object.assign(carry, {
-                [`${prefix || ''}${key}`]: value
-            });
-        }
-    }, {});
-}
+const { variations } = require('@vue-interface/variant');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const alert = {
