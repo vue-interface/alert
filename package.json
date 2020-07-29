@@ -39,7 +39,7 @@
     "@vue-interface/merge-classes": "^1.0.2",
     "@vue-interface/progress-bar": "^0.9.3",
     "@vue-interface/utils": "^0.9.2",
-    "@vue-interface/variant": "^1.0.7",
+    "@vue-interface/variant": "^1.0.10",
     "autoprefixer": "^9.8.0",
     "color": "^3.1.2",
     "core-js": "^3.6.4",

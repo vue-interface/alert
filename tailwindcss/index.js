@@ -1,57 +1,79 @@
 const Color = require('color');
 const plugin = require('tailwindcss/plugin');
-const { variations } = require('@vue-interface/variant');
+const variations = require('@vue-interface/variant/tailwindcss/variations');
+const defaultVariations = require('@vue-interface/variant/tailwindcss/defaultVariations');
+const { variants } = require('tailwindcss/stubs/defaultConfig.stub');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const alert = {
+        ':root': {
+            '--alert-line-height': theme('alert.lineHeight'),
+            '--alert-position': theme('alert.position'),
+            '--alert-padding-y': theme('alert.paddingY'),
+            '--alert-padding-x': theme('alert.paddingX'),
+            '--alert-border-radius': theme('alert.borderRadius'),
+
+            '--alert-fade-transition': theme('alert.fade.transition'),
+
+            '--alert-hidden-opacity': theme('alert.hidden.opacity'),
+
+        },
         '.alert': {
-            lineHeight: theme('alert.lineHeight', '1.5em'),
-            position: theme('alert.position', 'relative'),
-            padding: theme('alert.padding', '.5rem 1rem'),
-            borderRadius: theme('alert.borderRadius', '.25rem'),
+            lineHeight: theme('alert.lineHeight'),
+            position: theme('alert.position'),
+            padding: `${theme('alert.paddingY')} ${theme('alert.paddingY')}`,
+            borderRadius: theme('alert.borderRadius'),
             '*': {
-                lineHeight: theme('alert.lineHeight', '1.5rem')
+                lineHeight: theme('alert.lineHeight')
             },
             '&.fade': {
-                transition: theme('alert.fade', 'opacity .15s linear')
+                transition: theme('alert.fade.transition')
             },
             '&:not(.show)': {
-                opacity: 0            
+                opacity: theme('alert.hidden.opacity')          
             },
             '.alert-header': {
-                display: theme('alert.header.display', 'block'),
-                fontSize: theme('alert.header.fontSize', '1.25rem'),
+                display: theme('alert.header.display'),
+                fontSize: theme('alert.header.fontSize'),
             },
             '.alert-link, .alert-link:hover, .alert-link:active, .alert-link:focus': {
-                color: theme('alert.link.color', 'currentColor')
+                color: theme('alert.link.color')
             },
             '.alert-dismissable': {
-                padding: theme('alert.dismissable.padding', '0 0 0 3em')
+                padding: theme('alert.dismissable.padding'),
             },
             '.alert-close, .close': {
-                display: theme('alert.close.display', 'flex'),
-                position: theme('alert.close.position', 'absolute'),
-                top: theme('alert.close.top', 0),
-                right: theme('alert.close.right', 0),
-                background: theme('alert.close.background', 'none'),
-                border: theme('alert.close.border', 'none'),
-                cursor: theme('alert.close.cursor', 'pointer'),
-                color: theme('alert.close.color', 'inherit'),
-                padding: theme('alert.close.padding', '.5rem .66rem'),
+                display: theme('alert.close.display'),
+                position: theme('alert.close.position'),
+                top: theme('alert.close.top'),
+                right: theme('alert.close.right'),
+                background: theme('alert.close.background'),
+                border: theme('alert.close.border'),
+                cursor: theme('alert.close.cursor'),
+                color: theme('alert.close.color'),
                 'span': {
-                    lineHeight: theme('alert.lineHeight', '1.5rem'),
+                    lineHeight: theme('alert.lineHeight'),
                     fontSize: theme('alert.close.fontSize', '1.5rem'),
                 }
             } 
         }, 
     };
 
-    for(const [key, value] of Object.entries(variations(theme('colors')))) {
+    const variants = Object.assign({}, defaultVariations, variations(theme('colors')));
+
+    for(const [key, value] of Object.entries(variants)) {
         try {
             const color = Color(value);            
             const bgColor = color.lighten(.666).luminosity() == 1 ? color : color.lighten(.666);
             const borderColor = bgColor.darken(.15).hex();
             const fontColor = bgColor.isDark() && color.isDark() ? '#fff' : color.darken(.45).hex();
+
+            Object.assign(alert[':root'], {
+                [`--alert-${key}-color`]: fontColor,
+                [`--alert-${key}-background-color`]:bgColor.luminosity() === 1 ? bgColor.darken(.05).hex() : bgColor.hex(),
+                [`--alert-${key}-border`]:`${theme('alert.borderWidth', '1px')} ${theme('alert.borderStyle', 'solid')} ${borderColor}`,
+                [`--alert-${key}-close-color`]: fontColor,
+            });
 
             alert[`.alert-${key}`] = {
                 color: fontColor,
@@ -74,4 +96,40 @@ module.exports = plugin(function({ addComponents, theme }) {
     }
 
     addComponents(alert);
+}, {
+    theme: {
+        alert: theme => ({
+            lineHeight: '1.5em',
+            position: 'relative',
+            paddingY: '.5rem',
+            paddingX: '1rem',
+            borderRadius: '.25rem',
+            fade: {
+                transition: 'opacity .15s linear'
+            },
+            hidden: {
+                opacity: 0            
+            },
+            header: {
+                display: 'block',
+                fontSize: '1.25rem',
+            },
+            link: {
+                color: 'currentColor'
+            },
+            dismissable: {
+                padding: '0 0 0 3em'
+            },
+            close: {
+                display: 'flex',
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                color: 'inherit',
+            } 
+        })
+    }
 });
