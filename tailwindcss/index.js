@@ -16,7 +16,6 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--alert-fade-transition': theme('alert.fade.transition'),
 
             '--alert-hidden-opacity': theme('alert.hidden.opacity'),
-
         },
         '.alert': {
             lineHeight: theme('alert.lineHeight'),
