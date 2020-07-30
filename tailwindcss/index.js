@@ -50,6 +50,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 border: theme('alert.close.border'),
                 cursor: theme('alert.close.cursor'),
                 color: theme('alert.close.color'),
+                padding: `${theme('alert.close.paddingY')} ${theme('alert.close.paddingX')}`,
                 'span': {
                     lineHeight: theme('alert.lineHeight'),
                     fontSize: theme('alert.close.fontSize', '1.5rem'),
@@ -128,6 +129,8 @@ module.exports = plugin(function({ addComponents, theme }) {
                 border: 'none',
                 cursor: 'pointer',
                 color: 'inherit',
+                paddingY: '.125em',
+                paddingX: '.5em'
             } 
         })
     }

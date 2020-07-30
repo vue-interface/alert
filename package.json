@@ -44,7 +44,7 @@
     "color": "^3.1.2",
     "core-js": "^3.6.4",
     "postcss-nested": "^4.2.1",
-    "tailwindcss": "^1.4.6",
+    "tailwindcss": "^1.6.0",
     "vue": "^2.6.11",
     "vue-interface": "^0.4.58"
   },
