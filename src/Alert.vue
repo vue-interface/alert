@@ -92,11 +92,12 @@ export default {
 
     computed: {
         classes() {
-            return this.mergeClasses(this.variantClass, {
+            return {
                 fade: this.fade,
                 show: this.isVisible,
+                [this.variantClass]: true,
                 'alert-dismissable': this.dismissible,
-            });
+            };
         }
     },
 

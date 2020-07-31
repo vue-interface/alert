@@ -11,7 +11,7 @@ module.exports = {
         }
     },
     corePlugins: {
-        container: false,
+        container: false
     },
     plugins: [
         require('@vue-interface/variant/tailwindcss'),

@@ -1,6 +1,6 @@
 const Color = require('color');
 const plugin = require('tailwindcss/plugin');
-const variations = require('@vue-interface/variant/tailwindcss/variations');
+const reduce = require('@vue-interface/variant/tailwindcss/reduce');
 const defaultVariations = require('@vue-interface/variant/tailwindcss/defaultVariations');
 const { variants } = require('tailwindcss/stubs/defaultConfig.stub');
 
@@ -59,7 +59,7 @@ module.exports = plugin(function({ addComponents, theme }) {
         }, 
     };
 
-    const variants = Object.assign({}, defaultVariations, variations(theme('colors')));
+    const variants = Object.assign({}, defaultVariations, reduce(theme('colors')));
 
     for(const [key, value] of Object.entries(variants)) {
         try {
