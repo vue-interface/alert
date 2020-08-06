@@ -20,7 +20,6 @@ import AlertClose from './AlertClose';
 import Variant from '@vue-interface/variant';
 import { transition } from '@vue-interface/utils';
 import ProgressBar from '@vue-interface/progress-bar';
-import MergeClasses from '@vue-interface/merge-classes';
 
 export default {
 
@@ -32,8 +31,7 @@ export default {
     },
 
     mixins: [
-        Variant,
-        MergeClasses
+        Variant
     ],
 
     props: {
