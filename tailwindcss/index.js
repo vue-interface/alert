@@ -2,7 +2,6 @@ const Color = require('color');
 const plugin = require('tailwindcss/plugin');
 const reduce = require('@vue-interface/variant/tailwindcss/reduce');
 const defaultVariations = require('@vue-interface/variant/tailwindcss/defaultVariations');
-const { variants } = require('tailwindcss/stubs/defaultConfig.stub');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const alert = {
