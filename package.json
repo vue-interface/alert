@@ -2,7 +2,7 @@
   "name": "@vue-interface/alert",
   "version": "1.0.19",
   "description": "Vue alert component",
-  "main": "index.js",
+  "main": "./dist/Alert.umd.js",
   "scripts": {
     "watch": "npm run serve",
     "serve": "vue-cli-service build --target lib --name=Alert ./main.vue --watch",
