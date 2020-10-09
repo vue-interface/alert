@@ -57,5 +57,10 @@
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.5.4",
     "vuepress-plugin-template-constants": "^0.2.1"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
