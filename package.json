@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/alert",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "Vue alert component",
   "main": "./dist/Alert.umd.js",
   "scripts": {
