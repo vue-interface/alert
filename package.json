@@ -5,8 +5,8 @@
   "main": "./dist/Alert.umd.js",
   "scripts": {
     "watch": "npm run serve",
-    "serve": "vue-cli-service build --target lib --name=Alert ./main.vue --watch",
-    "build": "vue-cli-service build --target lib --name=Alert ./main.vue",
+    "serve": "vue-cli-service build --target lib --name=Alert ./main.js --watch",
+    "build": "vue-cli-service build --target lib --name=Alert ./main.js",
     "lint": "vue-cli-service lint",
     "fix": "vue-cli-service lint --fix",
     "pre-release": "npm run build; git add . -A; git commit -m 'pre-release commit'",
