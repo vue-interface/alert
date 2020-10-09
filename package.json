@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/alert",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Vue alert component",
   "main": "./index.js",
   "scripts": {
