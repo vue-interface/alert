@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Alert</title>
+    </head>
+    <body>
+        <div id="app" class="container mx-auto">
+            <h1 class="text-4xl mb-6">variant</h1>
+
+            <h3 class="text-2xl mb-3">Basic Usage</h3>
+
+            <alert>This is an alert.</alert>
+
+            <hr class="my-6">
+
+            <h3 class="text-2xl mt-6 mb-3">Dismissible</h3>
+
+            <alert show variant="info" dismissible>
+                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+            </alert>
+
+            <h3 class="text-2xl mt-6 mb-3">Dismissible Countdown</h3>
+
+            <alert variant="warning" :show="10" dismissible @dismiss-countdown="onDismissCountdown">
+                <strong>Dismissing in:</strong> T-minus {{ dismissingIn }}
+            </alert>
+
+            <hr class="my-6">
+
+            <h3 class="text-2xl mb-3">Variations</h3>
+
+            <alert show variant="primary" class="mb-2">This is an <b>primary</b> alert.</alert>
+            <alert show variant="secondary" class="mb-2">This is an <b>secondary</b> alert.</alert>
+            <alert show variant="success" class="mb-2">This is an <b>success</b> alert.</alert>
+            <alert show variant="danger" class="mb-2">This is an <b>danger</b> alert.</alert>
+            <alert show variant="warning" class="mb-2">This is an <b>warning</b> alert.</alert>
+            <alert show variant="info" class="mb-2">This is an <b>info</b> alert.</alert>
+            <alert show variant="dark" class="mb-2">This is an <b>dark</b> alert.</alert>
+            <alert show variant="light" class="mb-2">This is an <b>light</b> alert.</alert>
+            <alert show variant="muted" class="mb-2">This is an <b>muted</b> alert.</alert>
+
+            <hr class="my-6">
+
+            <h3 class="text-2xl mb-3">Link Color</h3>
+
+            <alert show variant="primary" class="mb-2">This is an <b>primary</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
+            <alert show variant="secondary" class="mb-2">This is an <b>secondary</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
+            <alert show variant="success" class="mb-2">This is an <b>success</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
+            <alert show variant="danger" class="mb-2">This is an <b>danger</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
+            <alert show variant="warning" class="mb-2">This is an <b>warning</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
+            <alert show variant="info" class="mb-2">This is an <b>info</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
+            <alert show variant="dark" class="mb-2">This is an <b>dark</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
+            <alert show variant="light" class="mb-2">This is an <b>light</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
+            <alert show variant="muted" class="mb-2">This is an <b>muted</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
+
+            <hr class="my-6">
+
+            <h3 class="text-2xl mb-3">Additional Content</h3>
+
+            <alert show variant="success" class="mb-2">
+                <h3 class="alert-heading mb-3 text-2xl font-bold">Well done!</h3>
+                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                <hr>
+                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+            </alert>
+
+        </div>
+
+        <script type="module">
+            import './index.css';
+            import Vue from 'vue/dist/vue';
+            import { Alert } from './index.js';
+
+            const vue = new Vue({
+                el: '#app',
+                components: {
+                    Alert
+                },
+                methods: {
+                    onDismissCountdown(count) {
+                        this.dismissingIn = count;
+                    }
+                },
+                data() {
+                    return {
+                        dismissingIn: null
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

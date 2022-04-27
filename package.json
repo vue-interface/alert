@@ -1,0 +1,61 @@
+{
+  "name": "@vue-interface/alert",
+  "version": "1.0.2",
+  "description": "A Vue alert component.",
+  "main": "./dist/alert.umd.js",
+  "module": "./index.js",
+  "files": [
+    "index.js",
+    "dist",
+    "src",
+    "tailwindcss"
+  ],
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "pre-release": "npm run build; git add . -A; git commit -m 'pre-release commit'",
+    "release-patch": "npm run pre-release && npm version patch -m \"%s\" && npm run release;",
+    "release-minor": "npm run pre-release && npm version minor -m \"%s\" && npm run release;",
+    "release-major": "npm run pre-release && npm version major -m \"%s\" && npm run release;",
+    "release": "git add . -A; git commit; git push --tags origin; npm publish;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/alert.git"
+  },
+  "keywords": [
+    "Alert",
+    "Vue",
+    "Component",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/alert/issues"
+  },
+  "homepage": "https://github.com/vue-interface/alert#readme",
+  "dependencies": {
+    "@vue-interface/progress-bar": "^1.0.0",
+    "@vue-interface/variant": "^1.2.0",
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.0",
+    "autoprefixer": "^10.4.2",
+    "babel-eslint": "^10.1.0",
+    "babel-preset-vue": "^2.0.2",
+    "change-case": "^4.1.2",
+    "color": "^4.2.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "pascalcase": "^2.0.0",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.18",
+    "vite": "^2.7.2",
+    "vite-plugin-vue2": "^1.9.3"
+  }
+}
