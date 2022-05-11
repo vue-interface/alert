@@ -1,10 +1,11 @@
 const Color = require('color');
 const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
+const shades = require('@vue-interface/variant/tailwindcss/shades');
 const variations = require('@vue-interface/variant/tailwindcss/variations');
 
-module.exports = plugin(function({ addComponents, theme }) {
-    const alert = {
+module.exports = plugin(function({ addComponents, matchComponents, theme }) {
+    addComponents({
         '.alert': {
             position: 'relative',
             padding: `${theme('alert.paddingY')} ${theme('alert.paddingX')}`,
@@ -45,36 +46,35 @@ module.exports = plugin(function({ addComponents, theme }) {
                 opacity: 1
             },
         }        
-    };
+    });
 
-    for(const [key, value] of Object.entries(theme('variations', variations))) {
-        try {
-            const color = Color(value);            
-            const bgColor = color.desaturate(.25).lighten(.75);
-            const borderColor = bgColor.darken(.15).hex();
-            const fontColor = bgColor.isDark() && color.isDark() ? '#fff' : color.darken(.45).hex();
+    matchComponents({
+        alert: ({ backgroundColor, borderColor, color }) => ({
+            color,
+            backgroundColor,
+            border: `${theme('alert.borderWidth')} ${theme('alert.borderStyle')} ${borderColor}`,
+            '.alert-close': {
+                color
+            },
+            'hr': {
+                borderColor,
+                margin: theme('alert.hr.margin'),
+            }
+        })
+    }, {
+        values: Object.fromEntries(
+            Object.entries(shades(theme('alert.variations')))
+                .map(([key, color]) => {
+                    const backgroundColor = Color(color).desaturate(.25).lighten(.75);
 
-            alert[`.alert-${key}`] = {
-                color: fontColor,
-                backgroundColor: bgColor.luminosity() === 1 ? bgColor.darken(.05).hex() : bgColor.hex(),
-                border: `${theme('alert.borderWidth')} ${theme('alert.borderStyle')} ${borderColor}`,
-            };
-
-            alert[`.alert-${key} .alert-close, .alert-${key} > .close`] = {
-                color: fontColor
-            };
-
-            alert[`.alert-${key} hr`] = {
-                margin: '1rem 0',
-                borderColor
-            };
-        }
-        catch (e) {
-            continue;
-        }
-    }
-
-    addComponents(alert);
+                    return [key, {
+                        backgroundColor: backgroundColor.luminosity() === 1 ? backgroundColor.darken(.05).hex() : backgroundColor.hex(),
+                        borderColor: Color(color).desaturate(.25).lighten(.6),
+                        color: backgroundColor.isDark() ? Color(color).lightness(95).hex() : Color(color).darken(.45).hex(),
+                    }];
+                })
+        )
+    });
 }, {
     theme: {
         alert: theme => ({
@@ -83,16 +83,24 @@ module.exports = plugin(function({ addComponents, theme }) {
             borderStyle: 'solid',
             paddingX: '1rem',
             paddingY: '1rem',
+
             fade: {
                 transition: 'opacity .15s linear'
             },
+
             header: {
                 display: 'block',
                 fontSize: '1.25rem'
             },
+
+            hr: {
+                margin: '1rem 0'
+            },
+
             dismissable: {
                 paddingRight: '3em'
             },
+
             close: {
                 background: `transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat`,
                 border: 'none',
@@ -106,7 +114,9 @@ module.exports = plugin(function({ addComponents, theme }) {
                 boxSizing: 'content-box',
                 width: '1em',
                 height: '1em',
-            }
+            },
+
+            variations: theme('variations', variations),
         })
     }
 });
