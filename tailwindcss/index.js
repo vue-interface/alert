@@ -69,7 +69,7 @@ module.exports = plugin(function({ addComponents, matchComponents, theme }) {
 
                     return [key, {
                         backgroundColor: backgroundColor.luminosity() === 1 ? backgroundColor.darken(.05).hex() : backgroundColor.hex(),
-                        borderColor: Color(color).desaturate(.25).lighten(.6),
+                        borderColor: backgroundColor.darken(.15).hex(),
                         color: backgroundColor.isDark() ? Color(color).lightness(95).hex() : Color(color).darken(.45).hex(),
                     }];
                 })
