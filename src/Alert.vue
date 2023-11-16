@@ -270,6 +270,7 @@ defineExpose({
                             'text-sm': size === 'md',
                             'text-base': size === 'lg'
                         }">
+                        
                         <slot name="buttons" />
                     </div> 
                 </div>
