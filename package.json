@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/alert",
-  "version": "2.2.0-beta.1",
+  "version": "3.0.0-beta.1",
   "description": "A Vue alert component.",
   "files": [
     "index.ts",
