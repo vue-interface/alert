@@ -7,103 +7,80 @@
     </head>
     <body>
         <div id="app" class="container mx-auto">
-            <h1 class="text-4xl mb-6">variant</h1>
+            <h1 class="text-4xl mb-6">Alert</h1>
+
+            <h3 class="text-2xl mb-3">Interactive Demo</h3>
+
+            <div class="mb-4">
+                <alert ref="alert" :show="true" :dismiss="3000" type="critical">This is a "critical" alert.</alert>
+
+                <button @click="() => $refs.alert.show()">Show Alert</button>
+            </div>
 
             <h3 class="text-2xl mb-3">Basic Usage</h3>
 
-            <alert>This is an alert.</alert>
+            <div class="flex flex-col gap-2 mb-4">
+                <alert type="critical" closeable>This is a "critical" alert.</alert>
+                <alert type="warning" closeable>This is a "warning" alert.</alert>
+                <alert type="success" closeable>This is a "success" alert.</alert>
+                <alert type="info" closeable>This is a "info" alert.</alert>
+                <alert type="question" closeable>This is a "question" alert.</alert>
+            </div>
 
-            <hr class="my-6">
+            <h3 class="text-2xl mb-3">Sizes</h3>
 
-            <h3 class="text-2xl mt-6 mb-3">Dismissible</h3>
+            <div class="flex flex-col gap-2 mb-4">
+                <alert size="sm">This is a small alert.</alert>
+                <alert size="md">This is a medium alert.</alert>
+                <alert size="lg">This is a large alert.</alert>
+            </div>
 
-            <alert show variant="info" dismissible>
-                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-            </alert>
+            <h3 class="text-2xl mb-3">Actions</h3>
 
-            <h3 class="text-2xl mt-6 mb-3">Dismissible Countdown</h3>
+            <div class="flex flex-col gap-2 mb-4">
+                <alert type="critical">
+                    This is a "critical" alert.
+                    <template #buttons>
+                        <button class="hover:bg-rose-600 hover:text-white font-semibold rounded px-2 py-1">Button 1</button>
+                        <button class="hover:bg-rose-600 hover:text-white font-semibold rounded px-2 py-1">Button 2</button>
+                    </template>
+                </alert>
+                <alert type="critical">
+                    This is a "critical" alert.
+                    <template #action>
+                        <a href="#">Button 1</a>
+                        <a href="#">Button 2</a>
+                    </template>
+                </alert>
+            </div>
 
-            <alert variant="warning" :show="10" dismissible @dismiss-countdown="onDismissCountdown">
-                <strong>Dismissing in:</strong> T-minus {{ dismissingIn }}
-            </alert>
+            <h3 class="text-2xl mb-3">Accents</h3>
 
-            <hr class="my-6">
-
-            <h3 class="text-2xl mb-3">Variations</h3>
-
-            <alert show variant="primary" class="mb-2">This is a <b>primary</b> alert.</alert>
-            <alert show variant="secondary" class="mb-2">This is a <b>secondary</b> alert.</alert>
-            <alert show variant="success" class="mb-2">This is a <b>success</b> alert.</alert>
-            <alert show variant="danger" class="mb-2">This is a <b>danger</b> alert.</alert>
-            <alert show variant="warning" class="mb-2">This is a <b>warning</b> alert.</alert>
-            <alert show variant="info" class="mb-2">This is an <b>info</b> alert.</alert>
-            <alert show variant="dark" class="mb-2">This is a <b>dark</b> alert.</alert>
-            <alert show variant="light" class="mb-2">This is a <b>light</b> alert.</alert>
-            <alert show variant="muted" class="mb-2">This is a <b>muted</b> alert.</alert>
-
-            <hr class="my-6">
-
-            <h3 class="text-2xl mb-3">Variations Shades</h3>
-
-            <alert show variant="primary-50" class="mb-2">This is a <b>primary-50</b> alert.</alert>
-            <alert show variant="primary-100" class="mb-2">This is a <b>primary-100</b> alert.</alert>
-            <alert show variant="primary-200" class="mb-2">This is a <b>primary-200</b> alert.</alert>
-            <alert show variant="primary-300" class="mb-2">This is a <b>primary-300</b> alert.</alert>
-            <alert show variant="primary-400" class="mb-2">This is a <b>primary-400</b> alert.</alert>
-            <alert show variant="primary-500" class="mb-2">This is a <b>primary-500</b> alert.</alert>
-            <alert show variant="primary-600" class="mb-2">This is a <b>primary-600</b> alert.</alert>
-            <alert show variant="primary-700" class="mb-2">This is a <b>primary-700</b> alert.</alert>
-            <alert show variant="primary-800" class="mb-2">This is a <b>primary-800</b> alert.</alert>
-            <alert show variant="primary-900" class="mb-2">This is a <b>primary-900</b> alert.</alert>
-
-            <hr class="my-6">
-
-            <h3 class="text-2xl mb-3">Link Color</h3>
-
-            <alert show variant="primary" class="mb-2">This is a <b>primary</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
-            <alert show variant="secondary" class="mb-2">This is a <b>secondary</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
-            <alert show variant="success" class="mb-2">This is a <b>success</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
-            <alert show variant="danger" class="mb-2">This is a <b>danger</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
-            <alert show variant="warning" class="mb-2">This is a <b>warning</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
-            <alert show variant="info" class="mb-2">This is an <b>info</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
-            <alert show variant="dark" class="mb-2">This is a <b>dark</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
-            <alert show variant="light" class="mb-2">This is a <b>light</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
-            <alert show variant="muted" class="mb-2">This is a <b>muted</b> alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</alert>
-
-            <hr class="my-6">
-
-            <h3 class="text-2xl mb-3">Additional Content</h3>
-
-            <alert show variant="success" class="mb-2">
-                <h3 class="alert-heading mb-3 text-2xl font-bold">Well done!</h3>
-                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-                <hr>
-                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-            </alert>
+            <div class="flex flex-col gap-2 mb-4">
+                <alert type="critical" accent>This is a "critical" alert.</alert>
+                <alert type="warning" accent>This is a "warning" alert.</alert>
+                <alert type="success" accent>This is a "success" alert.</alert>
+                <alert type="info" accent>This is a "info" alert.</alert>
+                <alert type="question" accent>This is a "question" alert.</alert>
+            </div>
 
         </div>
 
         <script type="module">
             import './index.css';
-            import Vue from 'vue/dist/vue';
-            import { Alert } from './index.js';
+            import { createApp } from 'vue/dist/vue.esm-bundler.js';
+            import { Alert } from './index.ts';
 
-            const vue = new Vue({
-                el: '#app',
+            const vue = createApp({
                 components: {
                     Alert
                 },
-                methods: {
-                    onDismissCountdown(count) {
-                        this.dismissingIn = count;
-                    }
-                },
-                data() {
-                    return {
-                        dismissingIn: null
-                    }
-                }
+                data: () => ({
+                    visible: false
+                })
             });
+
+            vue.mount('#app')
         </script>
     </body>
 </html>
