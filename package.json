@@ -3,10 +3,9 @@
   "version": "2.2.0-beta.1",
   "description": "A Vue alert component.",
   "files": [
-    "index.js",
+    "index.ts",
     "dist",
-    "src",
-    "tailwindcss"
+    "src"
   ],
   "type": "module",
   "main": "./dist/alert.umd.js",
@@ -17,9 +16,7 @@
       "import": "./dist/alert.js",
       "require": "./dist/alert.umd.cjs",
       "types": "./dist/index.d.ts"
-    },
-    "./tailwindcss": "./tailwindcss/index.cjs",
-    "./tailwindcss/safelist": "./tailwindcss/safelist.cjs"
+    }
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
