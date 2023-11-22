@@ -41,6 +41,9 @@
     "url": "https://github.com/vue-interface/alert/issues"
   },
   "homepage": "https://github.com/vue-interface/alert#readme",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
   "dependencies": {
     "@vue-interface/progress-bar": "^2.0.0-beta.7"
   },
